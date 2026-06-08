@@ -12,10 +12,6 @@ export const Home = () =>{
                 longUrl
             })
 
-            console.log(window.location.origin)
-
-            console.log(`${window.location.origin}/${response.data.data}`)
-
             setGeneratedUrl(`${window.location.origin}/${response.data.data}`);
             
         }catch(error){
@@ -23,15 +19,38 @@ export const Home = () =>{
         }
     }
 
-    const handleCopy = async () => {
-        await navigator.clipboard.writeText(generatedUrl);
+   const handleCopy = async () => {
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(generatedUrl);
+            } else {
+                const textArea = document.createElement("textarea");
 
-        setCopied(true);
+                textArea.value = generatedUrl;
 
-        setTimeout(()=>{
-            setCopied(false);
-        }, 3000)
-    }
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+
+                document.body.appendChild(textArea);
+
+                textArea.focus();
+                textArea.select();
+
+                document.execCommand("copy");
+
+                textArea.remove();
+            }
+
+            setCopied(true);
+
+            setTimeout(() => {
+                setCopied(false);
+            }, 3000);
+        } catch (error) {
+            console.error("Failed to copy:", error);
+        }
+    };
 
     return (
         <div className="flex flex-col items-center w-full mx-10 mt-5">
@@ -64,7 +83,7 @@ export const Home = () =>{
                         {generatedUrl}
                     </span>
 
-                    <button onClick={handleCopy}className="cursor-pointer text-sm bg-primary text-white px-3 py-1 rounded">
+                    <button disabled={!generatedUrl} onClick={handleCopy} className="cursor-pointer text-sm bg-primary text-white px-3 py-1 rounded">
                         {copied ? "Copied!" : "Copy"}
                     </button>
                 </div>
