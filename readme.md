@@ -318,27 +318,15 @@ http://localhost:8080
 _Add screenshot here_
 
 ```md
-![Home Page](images/home.png)
+![Home Page](https://ibb.co/wZvvSJTC)
 ```
-
----
-
-## URL Generated
-
-_Add screenshot here_
-
-```md
-![Generated URL](images/generated-url.png)
-```
-
----
 
 ## Analytics Dashboard
 
 _Add screenshot here_
 
 ```md
-![Analytics Dashboard](images/dashboard.png)
+![Analytics Dashboard](https://ibb.co/wFgMKXHW)
 ```
 
 # 🎯 Use Cases
