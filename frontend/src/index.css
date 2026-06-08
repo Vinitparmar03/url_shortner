@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #5A40F5;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background-color: #FAF8FD;
+  font-family: 'Inter', sans-serif;
+  max-width: 100vw;
+  overflow-x: hidden;
+}

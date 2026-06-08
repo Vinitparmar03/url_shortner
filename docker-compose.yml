@@ -1,0 +1,25 @@
+services:
+  frontend:
+    image: vinitparmar03/url_shortner_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  backend:
+    image: vinitparmar03/url_shortner_backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:7
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+
+volumes:
+  mongodb_data:
