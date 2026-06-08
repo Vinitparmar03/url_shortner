@@ -318,7 +318,7 @@ http://localhost:8080
 _Add screenshot here_
 
 ```md
-![Home Page](https://ibb.co/wZvvSJTC)
+![Home Page](https://i.ibb.co/gL9zDp1T/Screenshot-From-2026-06-08-22-54-20.png)
 ```
 
 ## Analytics Dashboard
@@ -326,7 +326,7 @@ _Add screenshot here_
 _Add screenshot here_
 
 ```md
-![Analytics Dashboard](https://ibb.co/wFgMKXHW)
+![Analytics Dashboard](https://i.ibb.co/4wQQ8scM/Screenshot-From-2026-06-08-22-53-55.png)
 ```
 
 # 🎯 Use Cases
