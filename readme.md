@@ -1,8 +1,3 @@
-
-# Project Title
-
-A brief description of what this project does and who it's for
-
 # 🔗 URL Shortener - MERN Stack Application
 
 A full-stack URL Shortener built using the MERN Stack that allows users to generate short URLs, track analytics, and manage redirections efficiently.
