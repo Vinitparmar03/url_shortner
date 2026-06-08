@@ -1,7 +1,5 @@
 FROM node:20-alpine AS builder
 
-ENV VITE_API_URL=http://localhost:8080
-
 WORKDIR /app
 
 COPY package*.json ./
