@@ -1,13 +1,19 @@
 services:
   frontend:
-    image: vinitparmar03/url_shortner_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: backend_url
     ports:
       - "80:80"
     depends_on:
       - backend
 
   backend:
-    image: vinitparmar03/url_shortner_backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "8080:8080"
     depends_on:
@@ -19,7 +25,6 @@ services:
       - "27018:27017"
     volumes:
       - mongodb_data:/data/db
-
 
 volumes:
   mongodb_data:

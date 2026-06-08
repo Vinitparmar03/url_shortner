@@ -96,15 +96,17 @@ cd url_shortner
 
 ### Step 2: Start All Services
 
+Before running docker compose up --build, update the VITE_API_URL value in the frontend service according to your backend URL.
+
 ```bash
-docker compose up -d
+docker compose up -d --build
 ```
 
 Docker Compose will automatically:
 
 - Create a custom Docker network
-- Pull frontend image
-- Pull backend image
+- Build frontend image
+- Build backend image
 - Pull MongoDB image
 - Create MongoDB volume
 - Start MongoDB container
@@ -153,39 +155,7 @@ docker compose down -v
 
 ---
 
-# Method 2: Pull Images Directly From Docker Hub
-
-If you don't want to clone the source code, use the prebuilt images.
-
----
-
-## Pull Images
-
-### Backend
-
-```bash
-docker pull vinitparmar03/url_shortner_backend:latest
-```
-
-### Frontend
-
-```bash
-docker pull vinitparmar03/url_shortner_frontend:latest
-```
-
-### MongoDB
-
-```bash
-docker pull mongo:7
-```
-
----
-
-## Create Network
-
-```bash
-docker network create url-shortener-network
-```
+# Method 2: Build each Images Directly with Docker build
 
 ---
 
@@ -197,29 +167,43 @@ docker volume create mongo-data
 
 ---
 
-## Run MongoDB
 
-```bash
-docker run -d --name mongodb --network url-shortener-network -v mongo-data:/data/db mongo:7
+## Create Network
+
+```
+docker network create my-net
 ```
 
----
+## Build Images
 
-## Run Backend
 
-```bash
-docker run -d --name backend --network url-shortener-network -p 8080:8080 urlshortener vinitparmar03/url_shortner_backend:latest
-```
-
----
-
-## Run Frontend
+### MongoDB
 
 ```bash
-docker run -d --name frontend --network url-shortener-network -p 80:80 vinitparmar03/url_shortner_frontend:latest
+docker run --network my-net -d -v mongo-data:/data/db -name mongodb mongo:7
 ```
 
----
+### Backend
+
+
+```bash
+docker build -t url_shortner_backend ./backend/
+```
+
+```bash
+docker run --rm -p 8080:8080 --name backend --network my-net url_shortner_backend
+```
+
+### Frontend
+
+```bash
+docker build --build-arg VITE_API_URL=your_backend_url_with_port -t url_shortner_frontend ./frontend/
+```
+
+```bash
+docker run --rm -p 80:80 --name frontend --network my-net url_shortner_frontend
+```
+
 
 ## Access Application
 
@@ -325,29 +309,7 @@ http://localhost:8080
 
 ---
 
-# 🐳 Building Docker Images Locally
 
----
-
-## Build Backend Image
-
-```bash
-cd backend
-
-docker build -t url_shortner_backend .
-```
-
----
-
-## Build Frontend Image
-
-```bash
-cd frontend
-
-docker build -t url_shortner_frontend .
-```
-
----
 
 # 📸 Application Screenshots
 
