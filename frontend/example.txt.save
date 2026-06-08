@@ -1,0 +1,6 @@
+docker network create my-net
+docker run -d --rm --name mongodb --network my-net -p 27017:27017 mongo:7
+
+docker run -d --rm --name backend --network my-net -p 8080:8080 vinitparmar03/url_shortner_backend
+
+docker run -d --rm --name frontend --network my-net p 80:80 vinitparmar03/url_shortner_frontend
