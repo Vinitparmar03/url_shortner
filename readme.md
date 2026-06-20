@@ -310,6 +310,53 @@ http://localhost:8080
 ---
 
 
+## Jenkins Freestyle Job Configuration
+
+This repository contains the Jenkins Freestyle Job configuration (`config.xml`) used for CI automation.
+
+### Steps to Restore
+
+1. Install Jenkins on a server.
+2. Create a new job directory under:
+
+```text
+/var/lib/jenkins/jobs/url-shortner/
+```
+
+3. Copy the provided `config.xml` file into the job directory.
+4. Restart Jenkins:
+
+```bash
+sudo systemctl restart jenkins
+```
+
+5. Recreate the GitHub credentials in Jenkins with the ID:
+
+```text
+jenkins-git
+```
+
+6. Configure the GitHub Webhook to point to:
+
+```text
+http://<jenkins-server>:8080/github-webhook/
+```
+
+7. Ensure Docker and Docker Compose are installed on the Jenkins server.
+
+### Build Commands
+
+Once configured, Jenkins will automatically pull the latest code from GitHub and execute:
+
+```bash
+docker compose down
+docker compose up --build -d
+```
+
+whenever a push event is received from GitHub.
+
+
+---
 
 # 📸 Application Screenshots
 
