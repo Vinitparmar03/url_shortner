@@ -55,7 +55,7 @@ export const Home = () =>{
     return (
         <div className="flex flex-col items-center w-full mx-10 mt-5">
             <div className="w-100 mt-10">
-                <h1 className="text-center text-4xl">Small Your Links, Share <span className="text-primary">Anywhere</span></h1>
+                <h1 className="text-center text-4xl">Shorten Your Links, Share <span className="text-primary">Anywhere</span></h1>
                 <h5 className="text-gray-500 text-center text-sm mt-2">Transform Long URLs into short, shareable links in seconds, Track, analyze, and optimize your links effortlessly</h5>
             </div>
 
