@@ -13,9 +13,9 @@ pipeline{
 			steps {
 
 				echo "building the image"
-				sh "docker compose down"
+				sh "docker-compose down"
 				echo "start the container with new build"
-				sh "docker compose up --build -d"		
+				sh "docker-compose up -d --build"	
 			}
 		}
 
