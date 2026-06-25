@@ -15,7 +15,7 @@ pipeline {
                 echo "Building Docker images"
 
                 sh '''
-                docker build --build-arg VITE_API_URL=http://13.232.246.124:8000 -t url_shortner_frontend ./frontend
+                docker build --build-arg VITE_API_URL=http://3.111.33.43:8000 -t url_shortner_frontend ./frontend
 
                 docker build -t url_shortner_backend ./backend
                 '''
