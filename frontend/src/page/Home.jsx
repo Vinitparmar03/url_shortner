@@ -71,7 +71,7 @@ export const Home = () =>{
                 <button onClick={generateUrl}
                     className="w-full mt-4 bg-primary text-white py-3 rounded-lg cursor-pointer"
                 >
-                    Generate Small Link
+                    Generate Short Link
                 </button>
             </div>
 
